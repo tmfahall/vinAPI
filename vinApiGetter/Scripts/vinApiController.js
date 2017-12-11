@@ -12,6 +12,7 @@ app.controller('vinApiController', ['$scope', '$http', function ($scope, $http) 
 
         vin = $scope.vinNum;
         year = $scope.yearNum;
+        price = $scope.price;
         $scope.vehicleMake = false;
         $scope.vehicleModel = false;
         $scope.vehicleYear = false;
@@ -25,7 +26,7 @@ app.controller('vinApiController', ['$scope', '$http', function ($scope, $http) 
             dataArray = $scope.myData.data.Results;
 
             angular.forEach(dataArray, function (value, key) {
-
+            
                 if (value.Variable == "Make") {
                     $scope.vehicleMake = value.Value;
                 }
@@ -39,7 +40,7 @@ app.controller('vinApiController', ['$scope', '$http', function ($scope, $http) 
                 }
 
                 if (value.Variable == "Vehicle Type") {
-                    $scope.vehicleType == value.Value;
+                    $scope.vehicleType = value.Value;
                 }
 
                 if (value.Value === null || value.Value == "" || value.Variable == "Error Code" || value.Variable == "Manufacturer Name" || value.Variable == "Plant City" || value.Variable == "Plant Country" || value.Variable == "Plant State" || value.Variable == "Manufacturer Id" || value.Variable == "Body Class" || value.Variable == "Cab Type" || value.Variable == "Displacement (CC)" || value.Variable == "Displacement(CI)" || value.Variable == "NCSA Make" || value.Variable == "NCSA Model" || value.Variable == "NCSA Body Type") {
@@ -80,6 +81,17 @@ app.controller('vinApiController', ['$scope', '$http', function ($scope, $http) 
                     Variable: "Vehicle Type"
                 })
             }
+
+            if ($scope.vehiclePrice === false) {
+                $scope.vehiclePrice = price;
+                $scope.vehicle.push({
+                    Variable: "Price",
+                    Value: price
+                })
+            }
+
+            console.log("vehiclePrice = " + $scope.vehiclePrice);
+            console.log("price = " + price);
         })
 
     }

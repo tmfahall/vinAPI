@@ -45,6 +45,18 @@
                                     <th>value</th>
                                     <th>options</th>
                                 </tr>
+                                <tr class="text-center">
+                                    <td>Price</td>
+                                    <td>$<input ng-model="price" type="text"></td>
+                                    <td></td>
+                                </tr>
+                                <!--add hours, miles here and in js-->
+                                <tr>
+                                    <td>Hours</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
                                 <tr ng-repeat="d in vehicle" class="text-center">
                                     <td>{{d.Variable}}</td>
                                     <td>{{d.Value}}</td>
@@ -115,8 +127,22 @@
 
                             </div>
                             <div class="col-xs-8">
-                                <h3><div contenteditable="true" id="editableSalesTitle">{{vehicleYear}} {{vehicleMake}} {{vehicleModel}}</div></h3>
+                                <h3><span contenteditable="true" id="editableSalesTitle" class="pull-left col-xs-12 col-md-9">{{vehicleYear}} {{vehicleMake}} {{vehicleModel}}</span><span class="pull-right col-xs-12 col-md-3">${{price}}</span></h3>
+                                <br />
+                                <br />
+                                <table>
+                                    <tr>
+                                        <td> {{}}</td>
+                                        <td>Model {{}}</td>
+                                    </tr>
+                                </table>
                                 <div id="editableSalesText" contenteditable="true">{{preview()}}</div>
+                                <br />
+                                <hr />
+                                <div class="buttons pull-right">
+                                    <button class="btn btn-group btn-success" type="submit">Submit</button>
+                                    <button class="btn btn-group btn-danger" type="button">Clear</button>
+                                </div>
                             </div>
                         </div>
 
